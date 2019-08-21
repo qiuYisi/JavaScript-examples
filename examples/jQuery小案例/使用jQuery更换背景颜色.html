@@ -1,0 +1,21 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+	  $("input").click(function(){
+		var $in_c = $("input:checked").val();
+	    $("body").css("background-color",$in_c)
+	  });
+	});
+	</script>
+</head>
+
+<body>
+	<input name="changeBgColor" value="blue" type="radio">蓝色
+	<input name="changeBgColor" value="orange" type="radio">橙色
+	<input name="changeBgColor" value="yellow" type="radio">黄色
+	<input name="changeBgColor" value="pink" type="radio">粉色
+</body>
+</html>

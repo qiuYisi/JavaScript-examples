@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>我的留言表单</title>
+	<script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#btn1").click(function(){
+				if ($("#lyb").val()) {
+					alert("留言提交成功！");
+				}else{
+					alert("留言表单不能为空！");
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<textarea id="lyb" rows="8" cols="35" placeholder="请输入留言"></textarea>
+	<button id="btn1">提交</button>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>用户注册</title>
+	<style type="text/css">
+		body {
+			text-align: center;
+		}
+		.user {
+			margin: auto;
+			width: 580px;
+			padding: 2px;
+			text-align: left;
+			border: 2px solid #ffff66;
+			border-radius: 10px;
+			background-color: #ffffff;
+			color: #000000;
+		}
+		.user * {
+			margin: 0;
+			padding: 0;
+			font: normal 20px/1.5em "宋体";
+
+		}
+		.user h3 {
+			height: 50px;
+			line-height: 40px;
+			font-weight: bold;
+			text-align: center;
+			padding: 2px;
+			margin-bottom:6px;
+			background-color: #ffff66;
+		}
+		.user .content {
+			padding: 15px;
+			padding-left: 23px;
+		}
+		.user .form_cont {
+			margin-bottom: 7px;
+		}
+		.user .form_cont label {
+			cursor: pointer;
+		}
+		.user .user_name input, .user .user_pw input {
+			width: 300px;
+			height: 25px;
+			padding: 3px 2px 0;
+			margin-bottom: 5px;
+			border: 2px solid #ffff66;
+		}
+		.user .agree_l input {
+			margin-right: 8px;
+			vertical-align: -1px;
+			*vertical-align: 0;
+		}
+		#small_size{
+			font-size: 15px;
+			margin-left: 5px;
+		}
+		.user .btn {
+			text-align: center;
+		}
+		.btn a {
+			text-decoration: none;
+			color: #000000;
+		}
+		.user .btn button {
+			text-align: center;
+			margin-right: 5px;
+			cursor: pointer;
+			box-shadow: 1px 1px 1px #999999;
+			border-radius: .3em;
+			*vertical-align: -3px;
+			background: url(images/image1.jpg) repeat-x;
+		}
+	</style>
+		<script type="text/javascript">
+        window.onload = function(){
+        	document.getElementById("signForm").addEventListener("submit",function(){
+	        	var inputName = document.getElementById("userName").value;
+	        	if (inputName.length !=11 ) {
+	        		alert("请在用户名中输入正确的手机号码！")
+	        	}
+	            var inputPw = document.getElementById("userPw").value;
+	            if (inputPw.length <= 6) {
+	            	alert("请输入不少于6个字符的密码！")
+	            }
+            },false);
+        }
+        function f(){
+        	return false;
+        }
+    </script>
+</head>
+<body>
+	<div class="user">
+		<h3>用户注册</h3>
+		<div class="content">
+			<form name="form2" method="post" id="signForm">
+				<div class="form_cont user_name">
+					<label for="userName">用户名：</label><br/>
+					<input type="text" id="userName" placeholder="请输入用户名" />
+				</div>
+				<div class="form_cont user_pw">
+					<label for="userPw">密 码：</label><br/>
+					<input type="password" id="userPw" placeholder="请输入至少6位字符" />
+				</div>
+				<div class="form_cont user_pw">
+					<label for="certainPw">确认密码：</label><br/>
+					<input type="password" id="certainPw" placeholder="再次输入密码" />
+				</div>
+				<div class="form_cont sex_1">
+					<label>性 别：</label>
+					<input type="radio" name="sex" id="female" value="0" /><label for="female">女</label>
+					<input type="radio" name="sex" id="man" value="1" /><label for="man">男</label>
+				</div>
+				<div class="form_cont agree_1">
+					<input type="checkbox" id="agree">
+					<label for="agree">同意服务条款</label>
+					<a href="" id="small_size" target="_blank">查看服务条款</a>
+				</div>
+				<div class="btn">
+					<button type="submit" id="sub" onsubmit="return f()">
+						<a href="login_in.html" target ="_blank" > 提交</a>
+					</button>
+					<button>
+						<a href="login_in.html" target ="_blank" > 返回</a>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

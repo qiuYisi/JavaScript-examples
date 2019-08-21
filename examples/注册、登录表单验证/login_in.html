@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>小柠檬用户登录界面</title>
+    <style type="text/css">
+        body {
+            margin: auto;
+            background-image: url("images/bg_image.jpg");
+            background-size: cover;
+        }
+        .user {
+            margin: auto;
+            padding: 2px;
+            width: 450px;
+            background-color: #ffffff;
+            color: #000000;
+            border: 2px solid #ffff66;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .user * {
+            margin: 0;
+            padding: 0;
+            font: normal 20px/1.5em "宋体";
+
+        }
+        .user h3 {
+            margin-bottom:6px;
+            padding: 2px;
+            height: 50px;
+            background-color: #ffff66;
+            line-height: 40px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .user .content {
+            padding: 15px 15px 15px 23px;
+        }
+        .user .form_cont {
+            margin-bottom: 7px;
+        }
+        .user .form_cont label {
+            cursor: pointer;
+        }
+        .user .user_name input, .user .user_pw input, .user .inputCode input {
+            margin-bottom: 5px;
+            padding: 3px 2px 0;
+            width: 300px;
+            height: 25px;
+            border: 2px solid #ffff66;
+        }
+        .user .inputCode input {
+            margin-right: 8px;
+            width: 60px;
+        }
+        .user .keep_l input {
+            margin-right: 8px;
+            vertical-align: -1px;
+            *vertical-align: 0;
+        }
+         .code
+        {
+            width:92px;
+            height:33px;
+            padding:2px 3px;
+            background-color: #ffff99;
+            text-align:center;
+            font-family:Arial;
+            font-style:italic;
+            font-weight: bolder;
+            color:#993300;
+            font-size:20px;
+            letter-spacing:2px;            
+            float:right;           
+            cursor:pointer;
+            vertical-align:middle;
+         }
+         .renew {
+            font-size: 15px;
+            color: #0033ff;
+            padding-left:2px;
+         }
+        span:hover {
+            text-decoration:underline;
+            cursor:pointer;
+        }
+        .user .btn {
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+            color: #000000;
+        }
+        .user .btn button {
+            margin-right: 5px;
+            text-align: center;
+            background: url(images/image1.jpg) repeat-x;
+            box-shadow: 1px 1px 1px #999999;
+            border-radius: .3em;
+            *vertical-align: -3px;
+            cursor: pointer;
+        }
+        .user #copyright {
+            margin-top: 17px;
+            font-size: 18px;
+            color: #666666;
+        }
+        .user #e-mail{
+            font-size: 18px;
+            color: #666666;
+        }
+    </style>
+    <script>
+        //页面加载时，生成随机验证码
+        window.onload=function(){
+         createCode(4);    
+        }
+
+        //生成验证码的方法
+        function createCode(length) {
+            var code = "";
+            var codeLength = parseInt(length); //验证码的长度。parseInt函数解析一个字符串，返回一个整数。
+            var checkCode = document.getElementById("checkCode");
+            //62个候选字符
+            var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+            'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); 
+            //循环组成验证码的字符串
+            for (var i = 0; i < codeLength; i++)
+            {
+                //获取随机验证码下标
+                var charNum = Math.floor(Math.random() * 62);
+                //组合成指定字符验证码
+                code += codeChars[charNum];
+            }
+            if (checkCode)
+            {
+                //为验证码区域添加样式名
+                checkCode.className = "code";
+                //将生成验证码赋值到显示区
+                checkCode.innerHTML = code;
+            }
+        }
+        //检查验证码是否正确
+        function validateCode()
+        {
+            var checkCode = document.getElementById("checkCode").innerHTML;
+            var inputCode = document.getElementById("inputCode").value;
+            if (inputCode.length <= 0)
+            {
+                alert("请输入验证码！");
+            }
+            else if (inputCode.toUpperCase() != checkCode.toUpperCase())
+            {
+                alert("验证码有误！");
+                createCode(4);
+            }      
+        }    
+    </script>
+</head>
+<body>
+    <div class="user">
+    <h3>用户登录</h3>
+    <div class="content">
+    <form name="form1" method="post" action="">
+        <div class="form_cont user_name">
+            <label for="userName">用户名：</label><br/>
+            <input type="text" id="userName" />
+        </div>
+        <div class="form_cont user_pw">
+            <label for="userPw">密 码：</label><br/>
+            <input type="password" id="userPw" />
+        </div>
+        <div>
+            <table border="0" cellspacing="5" cellpadding="5" >
+                <tr>
+                    <td>
+                        <div class="form_cont inputCode">
+                            <label for="inputCode">验证码：</label>
+                            <input type="text" id="inputCode" />
+                            <img src="">
+                </td>
+                <td>
+                    <div id="checkCode" class="code"  onclick="createCode(4)" ></div>
+                </td>
+                <td>
+                    <span class="renew" onclick="createCode(4)">看不清换一张</span>
+                </td>
+                </tr>
+            </table>
+        </div>
+        <div class="form_cont keep_l">
+            <input type="checkbox" id="keepLogin" />
+            <label for="keepLogin">记住我的登录信息</label>
+        </div>
+        <div class="btn">
+            <button type="submit" onclick="validateCode()">登录</button>
+            <button><a href="sign_in.html" target="_blank" >
+                注册
+            </a></button>
+        </div>
+        <div>
+            <p id="copyright">Copyright © 2019 qiuYisi </p>
+            <p id="e-mail">联系邮箱：1098017441@qq.com</p>
+        </div>
+    </form>
+</div>
+</div>
+</body>
+</html>
